@@ -42,7 +42,7 @@ print(f"\nTotal chunks created: {len(chunks)}")
 print("\nSample chunk:\n")
 print(chunks[0])
 
-
+""""
 
 # -------- EMBEDDINGS STEP --------
 
@@ -68,7 +68,28 @@ chunk_embeddings = get_embeddings(chunks)
 
 print("Embeddings created successfully!")
 print(f"Number of embeddings: {len(chunk_embeddings)}")
+print(f"Length of one embedding vector: {len(chunk_embeddings[0])}")     """
+
+
+# -------- EMBEDDINGS STEP --------
+
+from sentence_transformers import SentenceTransformer
+
+# Load free local embedding model
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+def get_embeddings(texts):
+    return model.encode(texts)
+
+
+# Create embeddings for all chunks
+print("\nCreating embeddings... (this may take a few seconds)")
+chunk_embeddings = get_embeddings(chunks)
+
+print("Embeddings created successfully!")
+print(f"Number of embeddings: {len(chunk_embeddings)}")
 print(f"Length of one embedding vector: {len(chunk_embeddings[0])}")
+
 
 
 # -------- RETRIEVAL STEP --------
