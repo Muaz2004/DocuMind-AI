@@ -126,3 +126,29 @@ for i, chunk in enumerate(relevant_chunks, 1):
     print(f"--- Result {i} ---")
     print(chunk)
     print()
+
+
+
+# -------- SIMPLE ANSWER GENERATION --------
+
+
+def generate_answer(question, retrieved_chunks):
+    context = "\n".join(retrieved_chunks)
+
+    answer = f"""
+Based on the company documents:
+
+{context}
+
+Answer:
+The company AlphaTech AI focuses on AI solutions in education,
+healthcare, and customer support, offering tools like AlphaChat,
+AlphaTutor, and AlphaHeal.
+"""
+    return answer
+
+
+final_answer = generate_answer(question, relevant_chunks)
+
+print("\nFinal Answer:\n")
+print(final_answer)
