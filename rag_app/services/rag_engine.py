@@ -75,3 +75,7 @@ def query_rag(question, top_k=3):
     _, indices = index.search(query_embedding, top_k)
 
     return [chunks[i] for i in indices[0]]
+
+
+def index_uploaded_pdf(pdf_path):
+    index_document(pdf_path)
